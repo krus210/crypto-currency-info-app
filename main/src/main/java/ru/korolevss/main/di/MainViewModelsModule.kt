@@ -2,33 +2,29 @@ package ru.korolevss.main.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import dagger.Binds
+import dagger.MapKey
 import dagger.Module
-import dagger.Provides
-import ru.korolevss.main.domain.interfaces.GetCoinAssetsUseCase
+import dagger.multibindings.IntoMap
 import ru.korolevss.main.ui.vm.MainFragmentViewModel
-import ru.korolevss.main.ui.vm.MainViewModelFactoryProvider
+import ru.korolevss.main.ui.vm.MainViewModelFactory
+import kotlin.reflect.KClass
 
 @Module
-class MainViewModelsModule {
+abstract class MainViewModelsModule {
 
-    @Provides
+    @Binds
     @MainFeatureScope
-    fun provideViewModelHolder(): @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel> = mutableMapOf()
+    abstract fun bindViewModelFactory(factory: MainViewModelFactory): ViewModelProvider.Factory
 
-    @Provides
-    @MainFeatureScope
-    fun bindsFactory(map: @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel>): ViewModelProvider.Factory =
-        MainViewModelFactoryProvider(map)
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainFragmentViewModel::class)
+    abstract fun splashViewModel(viewModel: MainFragmentViewModel): ViewModel
 
-
-    @Provides
-    @MainFeatureScope
-    fun provideMainFragmentViewModule(
-        map: @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel>,
-        getCoinAssetsUseCase: GetCoinAssetsUseCase
-    ): ViewModel = MainFragmentViewModel(getCoinAssetsUseCase).also {
-        map[MainFragmentViewModel::class.java] = it
-    }
-
+    @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+    @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+    @MapKey
+    internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
 }
