@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id 'kotlinx-serialization'
 }
 
 android {
@@ -52,4 +53,6 @@ dependencies {
     implementation dagger
     implementation retrofit
     kapt daggerCompiler
+    implementation json
+    implementation jsonConvertor
 }
