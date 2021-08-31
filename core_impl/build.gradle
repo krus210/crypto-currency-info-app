@@ -47,4 +47,6 @@ dependencies {
     implementation okhttp
     implementation loggingInterceptor
     kapt daggerCompiler
+    api room
+    kapt roomCompiler
 }

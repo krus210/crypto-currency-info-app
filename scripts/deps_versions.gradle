@@ -17,9 +17,9 @@ ext {
     jsr330 = "javax.inject:javax.inject:$jsr330Version"
     dagger = "com.google.dagger:dagger:$daggerVersion"
     daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
-    room = "androidx.room:room-runtime:$roomVersion"
     okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"
     loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    room = "androidx.room:room-ktx:$roomVersion"
     roomCompiler = "androidx.room:room-compiler:$roomVersion"
     viewPager2 = "androidx.viewpager2:viewpager2:$viewPager2Version"
     coroutinesDependencies = [

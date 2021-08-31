@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class CoinAssetResponse(
 
     @SerialName("id")
-    val summary: String = "",
+    val id: String = "",
 
     @SerialName("rank")
     val rank: Int = 0,

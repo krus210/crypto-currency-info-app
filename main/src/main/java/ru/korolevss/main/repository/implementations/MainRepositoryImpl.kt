@@ -15,20 +15,6 @@ class MainRepositoryImpl @Inject constructor(val api: AssetsApi) : MainRepositor
             settings.searchIds?.joinToString(separator = ","),
             settings.limit,
             settings.offset
-        ).data.map {
-            CoinAsset(
-                it.summary,
-                it.rank,
-                it.symbol,
-                it.name,
-                it.supply,
-                it.maxSupply,
-                it.marketCapUsd,
-                it.volumeUsd24Hr,
-                it.priceUsd,
-                it.changePercent24Hr,
-                it.vwap24Hr
-            )
-        }
+        ).data.map { it.mapToCoinAsset() }
 
 }
