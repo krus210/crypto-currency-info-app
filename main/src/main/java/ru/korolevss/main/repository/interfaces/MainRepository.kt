@@ -1,9 +1,10 @@
 package ru.korolevss.main.repository.interfaces
 
+import kotlinx.coroutines.flow.Flow
 import ru.korolevss.core_api.dto.CoinAsset
-import ru.korolevss.main.domain.CoinAssetsSettings
 
 interface MainRepository {
-
-    suspend fun getCoinAssets(settings : CoinAssetsSettings = CoinAssetsSettings()) : List<CoinAsset>
+    fun loadCoinAssets(): Flow<Result<Unit>>
+    fun refreshCoinAssets(): Flow<Result<Unit>>
+    fun getCoinAssets(): Flow<Result<List<CoinAsset>>>
 }

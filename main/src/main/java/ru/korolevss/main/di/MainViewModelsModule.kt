@@ -5,22 +5,30 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import ru.korolevss.main.ui.vm.MainFragmentViewModel
 import ru.korolevss.main.ui.vm.MainViewModelFactory
 import kotlin.reflect.KClass
 
-@Module
-abstract class MainViewModelsModule {
+@Module(includes = [MainViewModelsModule.BindsModule::class])
+object MainViewModelsModule {
 
-    @Binds
-    @MainFeatureScope
-    abstract fun bindViewModelFactory(factory: MainViewModelFactory): ViewModelProvider.Factory
+    @Provides
+    fun provideCoroutineDispatcher() : CoroutineDispatcher = Dispatchers.IO
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(MainFragmentViewModel::class)
-    abstract fun splashViewModel(viewModel: MainFragmentViewModel): ViewModel
+    interface BindsModule {
+        @Binds
+        @MainFeatureScope
+        fun bindViewModelFactory(factory: MainViewModelFactory): ViewModelProvider.Factory
+
+        @Binds
+        @IntoMap
+        @ViewModelKey(MainFragmentViewModel::class)
+        fun splashViewModel(viewModel: MainFragmentViewModel): ViewModel
+    }
 
     @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
     @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
