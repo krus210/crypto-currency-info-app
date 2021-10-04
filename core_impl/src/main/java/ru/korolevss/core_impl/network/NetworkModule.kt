@@ -25,8 +25,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideNetworkClient(): OkHttpClient = OkHttpClient().newBuilder()
-        .addInterceptor(HttpLoggingInterceptor())
+    fun provideNetworkClient(networkConnectionInterceptor: NetworkConnectionInterceptor): OkHttpClient = OkHttpClient().newBuilder()
+        .addInterceptor(networkConnectionInterceptor)
+        .addInterceptor(HttpLoggingInterceptor()
+            .apply {
+                setLevel(HttpLoggingInterceptor.Level.HEADERS)
+                setLevel(HttpLoggingInterceptor.Level.BODY)
+            })
         .build()
 
     @ExperimentalSerializationApi

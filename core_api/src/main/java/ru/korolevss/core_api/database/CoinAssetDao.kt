@@ -21,7 +21,7 @@ interface CoinAssetDao {
     fun getAll() : Flow<List<CoinAsset>>
 
     @Query("SELECT COUNT(*) FROM coin_assets")
-    fun getSize() : Flow<Int>
+    suspend fun getSize() : Int
 
     @Query("SELECT * FROM coin_assets WHERE id = :id")
     fun get(id : String) : Flow<CoinAsset>

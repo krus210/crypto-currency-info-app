@@ -15,7 +15,6 @@ import javax.inject.Inject
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var viewModel : MainFragmentViewModel
-    private val binding by viewBinding(FragmentMainBinding::bind)
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -26,7 +25,5 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel = ViewModelProvider(this, viewModelFactory)[MainFragmentViewModel::class.java]
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
+
 }
