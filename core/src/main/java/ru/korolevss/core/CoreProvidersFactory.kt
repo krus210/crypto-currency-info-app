@@ -8,8 +8,8 @@ import ru.korolevss.core_impl.network.DaggerNetworkComponent
 
 object CoreProvidersFactory {
 
-    fun createNetworkBuilder() : NetworkProvider = DaggerNetworkComponent.create()
+    fun createNetworkBuilder(appProvider: AppProvider): NetworkProvider = DaggerNetworkComponent.builder().appProvider(appProvider).build()
 
-    fun createDatabaseBuilder(appProvider: AppProvider) : DatabaseProvider =
+    fun createDatabaseBuilder(appProvider: AppProvider): DatabaseProvider =
         DaggerDatabaseComponent.builder().appProvider(appProvider).build()
 }

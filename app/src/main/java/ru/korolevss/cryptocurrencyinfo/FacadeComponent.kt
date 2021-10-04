@@ -16,7 +16,13 @@ interface FacadeComponent : ProvidersFacade {
         fun init(application: Application): FacadeComponent =
             DaggerFacadeComponent.builder()
                 .appProvider(AppComponent.create(application))
-                .networkProvider(CoreProvidersFactory.createNetworkBuilder())
+                .networkProvider(
+                    CoreProvidersFactory.createNetworkBuilder(
+                        AppComponent.create(
+                            application
+                        )
+                    )
+                )
                 .databaseProvider(
                     CoreProvidersFactory.createDatabaseBuilder(
                         AppComponent.create(

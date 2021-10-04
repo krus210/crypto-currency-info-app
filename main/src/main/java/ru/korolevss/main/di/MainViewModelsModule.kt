@@ -19,6 +19,7 @@ object MainViewModelsModule {
     @Provides
     fun provideCoroutineDispatcher() : CoroutineDispatcher = Dispatchers.IO
 
+    @Module
     interface BindsModule {
         @Binds
         @MainFeatureScope

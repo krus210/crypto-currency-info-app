@@ -2,23 +2,28 @@ package ru.korolevss.main.di
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import ru.korolevss.main.domain.GetCoinAssetsUseCase
 import ru.korolevss.main.domain.LoadCoinAssetsPeriodicallyUseCase
 import ru.korolevss.main.repository.implementations.MainRepositoryImpl
 import ru.korolevss.main.repository.interfaces.MainRepository
 
-@Module
-abstract class MainDomainModule {
+@Module(includes = [MainDomainModule.BindsModule::class])
+object MainDomainModule {
 
-    @Binds
+    @Provides
     @MainFeatureScope
-    abstract fun bindsGetCoinAssetsUseCase(getCoinAssetsUseCase: GetCoinAssetsUseCase): GetCoinAssetsUseCase
+    fun bindsGetCoinAssetsUseCase(mainRepository: MainRepository): GetCoinAssetsUseCase = GetCoinAssetsUseCase(mainRepository)
 
-    @Binds
+    @Provides
     @MainFeatureScope
-    abstract fun bindsLoadCoinAssetsUseCase(loadCoinAssetsPeriodicallyUseCase: LoadCoinAssetsPeriodicallyUseCase): LoadCoinAssetsPeriodicallyUseCase
+    fun bindsLoadCoinAssetsUseCase(mainRepository: MainRepository): LoadCoinAssetsPeriodicallyUseCase =
+        LoadCoinAssetsPeriodicallyUseCase(mainRepository)
 
-    @Binds
-    @MainFeatureScope
-    abstract fun bindsRepository(mainRepositoryImpl: MainRepositoryImpl): MainRepository
+    @Module
+    interface BindsModule {
+        @Binds
+        @MainFeatureScope
+        fun bindsRepository(mainRepositoryImpl: MainRepositoryImpl): MainRepository
+    }
 }
