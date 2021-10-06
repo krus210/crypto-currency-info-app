@@ -20,7 +20,7 @@ import ru.korolevss.main.ui.vm.MainFragmentViewModel
 import ru.korolevss.navigation.NavGraphDirections
 import javax.inject.Inject
 
-class MainFragment : Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainFragmentViewModel
 
