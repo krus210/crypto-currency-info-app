@@ -19,23 +19,23 @@ data class CoinAssetResponse(
     val name: String = "",
 
     @SerialName("supply")
-    val supply: Double = 0.0,
+    val supply: Double? = null,
 
     @SerialName("maxSupply")
-    val maxSupply: Double = 0.0,
+    val maxSupply: Double? = null,
 
     @SerialName("marketCapUsd")
-    val marketCapUsd: Double = 0.0,
+    val marketCapUsd: Double? = null,
 
     @SerialName("volumeUsd24Hr")
-    val volumeUsd24Hr: Double = 0.0,
+    val volumeUsd24Hr: Double? = null,
 
     @SerialName("priceUsd")
-    val priceUsd: Double = 0.0,
+    val priceUsd: Double? = null,
 
     @SerialName("changePercent24Hr")
-    val changePercent24Hr: Double = 0.0,
+    val changePercent24Hr: Double? = null,
 
     @SerialName("vwap24Hr")
-    val vwap24Hr: Double = 0.0,
+    val vwap24Hr: Double? = null,
 )

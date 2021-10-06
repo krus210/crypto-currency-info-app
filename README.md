@@ -20,10 +20,8 @@
 ## Стек 
 * Retrofit, OkHttp
 * Room
-* Coroutines, Flow, LiveData
-* Fresco
+* Coroutines, Flow
+* Coil
 * Android Navigation
-* Google Firebase
-* Hilt
-* ViewPager2, RecyclerView
-* Jetpack Compose (2-3 экрана) 
+* Dagger 2
+* Jetpack Compose

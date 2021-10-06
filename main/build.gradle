@@ -12,7 +12,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdk 22
+        minSdk 23
         targetSdk 30
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -46,23 +46,16 @@ apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation appcompat
-    implementation material
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation project(':core')
     implementation project(':navigation')
+    implementation project(':compose_general')
     implementation dagger
     implementation retrofit
     kapt daggerCompiler
     implementation json
     implementation jsonConvertor
-
-    //compose
-    implementation activityCompose
-    implementation materialCompose
-    implementation animationCompose
-    implementation toolingCompose
-    implementation viewModelsCompose
+    implementation coil
 }

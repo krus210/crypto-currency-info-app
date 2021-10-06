@@ -8,11 +8,11 @@ fun CoinAssetResponse.mapToCoinAsset() : CoinAsset = CoinAsset(
     this.rank,
     this.symbol,
     this.name,
-    this.supply,
-    this.maxSupply,
-    this.marketCapUsd,
-    this.volumeUsd24Hr,
-    this.priceUsd,
-    this.changePercent24Hr,
-    this.vwap24Hr
+    this.supply ?: 0.0,
+    this.maxSupply ?: 0.0,
+    this.marketCapUsd ?: 0.0,
+    this.volumeUsd24Hr ?: 0.0,
+    this.priceUsd ?: 0.0,
+    this.changePercent24Hr ?: 0.0,
+    this.vwap24Hr ?: 0.0
 )
