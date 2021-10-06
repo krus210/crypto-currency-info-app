@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdk 22
+        minSdk 23
         targetSdk 30
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -47,4 +47,6 @@ dependencies {
     implementation okhttp
     implementation loggingInterceptor
     kapt daggerCompiler
+    api room
+    kapt roomCompiler
 }

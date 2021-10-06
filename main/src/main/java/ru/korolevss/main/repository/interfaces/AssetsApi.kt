@@ -8,9 +8,9 @@ interface AssetsApi {
 
     @GET("assets")
     suspend fun getAssets(
-        @Query("search") search : String?,
-        @Query("ids") ids : String?,
-        @Query("limit") limit : Int?,
-        @Query("offset") offset : Int?
+        @Query("search") search : String? = null,
+        @Query("ids") ids : String? = null,
+        @Query("limit") limit : Int? = null,
+        @Query("offset") offset : Int? = null
     ): DataResponse
 }

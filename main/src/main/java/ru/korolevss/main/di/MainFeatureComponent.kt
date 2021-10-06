@@ -14,7 +14,7 @@ interface MainFeatureComponent {
 
     companion object {
 
-        fun create(providersFacade: ProvidersFacade) =
+        fun create(providersFacade: ProvidersFacade): MainFeatureComponent =
             DaggerMainFeatureComponent
                 .builder()
                 .providersFacade(providersFacade)

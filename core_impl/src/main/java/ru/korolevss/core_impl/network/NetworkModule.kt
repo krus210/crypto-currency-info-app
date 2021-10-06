@@ -17,7 +17,10 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideJson(): Json = Json { ignoreUnknownKeys = true }
+    fun provideJson(): Json = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+    }
 
     @Provides
     @Singleton
@@ -25,14 +28,23 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideNetworkClient(): OkHttpClient = OkHttpClient().newBuilder()
-        .addInterceptor(HttpLoggingInterceptor())
+    fun provideNetworkClient(
+        networkConnectionInterceptor: NetworkConnectionInterceptor,
+        headerInterceptor: HeaderInterceptor
+    ): OkHttpClient = OkHttpClient().newBuilder()
+        .addInterceptor(networkConnectionInterceptor)
+        .addInterceptor(headerInterceptor)
+        .addInterceptor(HttpLoggingInterceptor()
+            .apply {
+                setLevel(HttpLoggingInterceptor.Level.HEADERS)
+                setLevel(HttpLoggingInterceptor.Level.BODY)
+            })
         .build()
 
     @ExperimentalSerializationApi
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, json : Json, mediaType : MediaType) : Retrofit = Retrofit.Builder()
+    fun provideRetrofit(okHttpClient: OkHttpClient, json: Json, mediaType: MediaType): Retrofit = Retrofit.Builder()
         .client(okHttpClient)
         .baseUrl("https://api.coincap.io/v2/")
         .addConverterFactory(json.asConverterFactory(mediaType))

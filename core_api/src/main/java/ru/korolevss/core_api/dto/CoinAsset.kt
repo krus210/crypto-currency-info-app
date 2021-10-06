@@ -1,7 +1,12 @@
 package ru.korolevss.core_api.dto
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "coin_assets")
 data class CoinAsset(
-    val summary: String = "",
+    @PrimaryKey
+    val id: String = "",
     val rank: Int = 0,
     val symbol: String = "",
     val name: String = "",
