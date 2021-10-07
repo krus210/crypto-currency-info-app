@@ -28,7 +28,7 @@ object MainViewModelsModule {
         @Binds
         @IntoMap
         @ViewModelKey(MainFragmentViewModel::class)
-        fun splashViewModel(viewModel: MainFragmentViewModel): ViewModel
+        fun mainViewModel(viewModel: MainFragmentViewModel): ViewModel
     }
 
     @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
