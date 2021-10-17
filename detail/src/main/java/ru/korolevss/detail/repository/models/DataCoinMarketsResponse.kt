@@ -32,12 +32,12 @@ data class CoinMarketResponse(
     val quoteSymbol: String = "",
 
     @SerialName("volumeUsd24Hr")
-    val volumeUsd24Hr: Double = 0.0,
+    val volumeUsd24Hr: Double? = null,
 
     @SerialName("priceUsd")
-    val priceUsd: Double = 0.0,
+    val priceUsd: Double? = null,
 
     @SerialName("volumePercent")
-    val volumePercent: Double = 0.0
+    val volumePercent: Double? = null
 
     )

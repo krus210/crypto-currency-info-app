@@ -17,7 +17,7 @@ data class CoinsHistoryResponse(
 data class PriceHistoryResponse(
 
     @SerialName("priceUsd")
-    val priceUsd: Double = 0.0,
+    val priceUsd: Double? = null,
 
     @SerialName("time")
     val time: Long = 0L

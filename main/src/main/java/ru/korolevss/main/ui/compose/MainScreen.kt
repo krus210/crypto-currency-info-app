@@ -160,7 +160,10 @@ private fun CoinAssetsList(
             applyTop = false
         )
     ) {
-        items(coinAssets) { coinAsset ->
+        items(
+            items = coinAssets,
+            key = { coinAsset -> coinAsset.id }
+        ) { coinAsset ->
             CoinAssetRow(coinAsset = coinAsset, openCoinAsset = openCoinAsset)
             CoinAssetsDivider()
         }

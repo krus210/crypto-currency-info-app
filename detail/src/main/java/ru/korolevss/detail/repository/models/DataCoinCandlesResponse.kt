@@ -18,21 +18,21 @@ data class DataCoinCandlesResponse(
 data class CoinCandleResponse(
 
     @SerialName("open")
-    val open: Double = 0.0,
+    val open: Double? = null,
 
     @SerialName("high")
-    val high: Double = 0.0,
+    val high: Double? = null,
 
     @SerialName("low")
-    val low: Double = 0.0,
+    val low: Double? = null,
 
     @SerialName("close")
-    val close: Double = 0.0,
+    val close: Double? = null,
 
     @SerialName("volume")
-    val volume: Double = 0.0,
+    val volume: Double? = null,
 
     @SerialName("period")
-    val period: Long = 0,
+    val period: Long? = null,
 
 )
