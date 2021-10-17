@@ -56,4 +56,6 @@ dependencies {
     api accomponistInsets
     api accomponistSwipeRefresh
     api accomponistSystemUiController
+    api accomponistPager
+    api accomponistPagerIndicators
 }
